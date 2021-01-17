@@ -19,9 +19,13 @@ add_executable(shader_uniform ${SOURCE2})
 set(SOURCE3 ${PROJECT_SOURCE_DIR}/../third_libs/glad.c shader_muti_attr.cpp)
 add_executable(shader_muti_attr ${SOURCE3})
 
+set(SOURCE4 ${PROJECT_SOURCE_DIR}/../third_libs/glad.c shader_loader_test.cpp)
+add_executable(shader_loader_test ${SOURCE3})
+
 if (APPLE)
     target_link_libraries(shader_in_out "-framework OpenGL")
     target_link_libraries(shader_uniform "-framework OpenGL")
     target_link_libraries(shader_muti_attr "-framework OpenGL")
+    target_link_libraries(shader_loader_test "-framework OpenGL")
 endif()
 
