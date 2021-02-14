@@ -44,15 +44,15 @@ public:
         // 2. compile shaders
         unsigned int vertex, fragment;
         vertex = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertex, 1, &vertexCode, nullptr);
+        glShaderSource(vertex, 1, &vShaderCode, nullptr);
         glCompileShader(vertex);
-        checkCompileError(vertex, "VERTEX");
+        checkCompileErrors(vertex, "VERTEX");
 
         // fragment Shader
-        fragmnet = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragment, 1, &fragmentCode, nullptr);
+        fragment = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fragment, 1, &fShaderCode, nullptr);
         glCompileShader(fragment);
-        checkCompileError(fragment, "FRAGMENT");
+        checkCompileErrors(fragment, "FRAGMENT");
 
         // Shader program
         ID = glCreateProgram();
