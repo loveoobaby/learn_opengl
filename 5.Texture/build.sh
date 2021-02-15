@@ -6,7 +6,4 @@ cd build
 cmake ..
 make
 cp texture_demo ..
-
-# run target
-cd ..
-./texture_demo
+cp texture_muti_demo ..

@@ -13,7 +13,11 @@ link_libraries(${GLFW_LINK})
 set(SOURCE1 ${PROJECT_SOURCE_DIR}/../third_libs/glad.c texture.cpp)
 add_executable(texture_demo ${SOURCE1})
 
+set(SOURCE2 ${PROJECT_SOURCE_DIR}/../third_libs/glad.c texture_muti_demo.cpp)
+add_executable(texture_muti_demo ${SOURCE2})
+
 if (APPLE)
     target_link_libraries(texture_demo "-framework OpenGL")
+    target_link_libraries(texture_muti_demo "-framework OpenGL")
 endif()
 
