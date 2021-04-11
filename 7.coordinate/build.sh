@@ -5,6 +5,4 @@ mkdir build
 cd build
 cmake ..
 make
-cp glm_demo ..
-cd ..
-./glm_demo
+cp coordinate ..

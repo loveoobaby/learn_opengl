@@ -14,7 +14,7 @@ const char *vertexShaderSource = "#version 330 core\n" // 指定opengl的版本�
     "layout (location = 0) in vec3 aPos;\n" // in声明输入的顶点属性，是3坐标矢量，变量名为aPos
     "void main()\n"
     "{\n"
-    "    gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n" // gl_Position是预定义的输出变量，实际是vec4类型，由于输入是3分量，要转换成4分量
+    "    gl_Position = vec4(aPos, 1.0);\n" // gl_Position是预定义的输出变量，实际是vec4类型，由于输入是3分量，要转换成4分量
     "}\0";
 
 const char *fragmentShaderSource = "#version 330 core\n"
@@ -34,6 +34,8 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
+
+
     GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "learnopengl", nullptr, nullptr);
     if (window == nullptr){
         cout << "Failed to create GLFW window" << endl;
@@ -48,6 +50,12 @@ int main() {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
+    /* 获取版本信息 */
+    const GLubyte* renderer = glGetString( GL_RENDERER ); /* get renderer string */
+    const GLubyte* version  = glGetString( GL_VERSION );  /* version as a string */
+    printf( "Renderer: %s\n", renderer );
+    printf( "OpenGL version supported %s\n", version );
 
     /**
      * glBufferData是专门用于将用户定义的数据复制到当前绑定的缓冲中；
@@ -110,7 +118,7 @@ int main() {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    float vertices[] = {
+    GLfloat vertices[] = {
         -0.5f, -0.5f, 0.0f,
         0.5f, -0.5f, 0.0f,
         0.0f,  0.5f, 0.0f

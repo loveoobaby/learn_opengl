@@ -4,7 +4,7 @@ project(make_a_window VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 11)
 
 set(GLAD_H ${PROJECT_SOURCE_DIR}/../include)
-include_directories(${GLAD_H} ${GLFW_H})
+include_directories(${GLAD_H})
 
 set(SOURCE ${PROJECT_SOURCE_DIR}/../third_libs/glad.c main.cpp)
 add_executable(${PROJECT_NAME} ${SOURCE})
