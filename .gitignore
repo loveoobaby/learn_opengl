@@ -209,3 +209,5 @@ testpy.html
 7.coordinate/cube1
 7.coordinate/cube2
 8.camera/camera
+8.camera/camera_base
+8.camera/camera_class

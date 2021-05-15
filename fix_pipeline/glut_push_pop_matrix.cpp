@@ -72,11 +72,12 @@ void myinit(void)
 
 void myReshape(GLsizei w, GLsizei h)
 {
-
+    // 定义视口
     glViewport(0, 0, w, h);
 	
+	// 设置投影矩阵
     glMatrixMode(GL_PROJECTION);
-   glLoadIdentity();
+    glLoadIdentity();
 	gluPerspective(60.0, 1.0*(GLfloat)w/(GLfloat)h, 1.0, 30.0);
 //	gluPerspective(60.0, 1.0, 1.0, 30.0);	
 //  glFrustum (-1.0, 1.0, -1.0, 1.0, 1.0, 30.0);
@@ -90,21 +91,28 @@ void display(void)
 //	glEnable(GL_ALPHA_TEST);
 //	glAlphaFunc(GL_LESS, 0.5f);
 
+	// 设置成几何模型模式
     glMatrixMode(GL_MODELVIEW);
 
     glLoadIdentity();
 
-    glTranslatef(G_fXDistance, G_fYDistance, -G_fZDistance);
-	glRotatef(G_fAngle_horizon, 0.0f, 1.0f, 0.0f);
-	glRotatef(G_fAngle_vertical, 1.0f, 0.0f, 0.0f);
+	glTranslatef(0., 0., -G_fZDistance);
+	glPushMatrix();
+	   glColor4f(1.0f, 0.0f, 0.0f, 0.0f);
+	   glRotatef(G_fAngle_horizon, 0.0f, 1.0f, 0.0f);
+	   glRotatef(G_fAngle_vertical, 1.0f, 0.0f, 0.0f);
+	   
+	   glutWireTeapot(1.0);
+	glPopMatrix();
 
-
-	glColor4f(1.0f, 0.0f, 0.0f, 0.0f);
-	glBegin(GL_TRIANGLES);
-		glVertex3f (-1.0, -1.0f, 0.0f);
-		glVertex3f (1.0, -1.0f, 0.0f);
-		glVertex3f (1.0, 1.0f, 0.0f);
-	glEnd();
+	glPushMatrix();
+	   glColor4f(0.0f, 1.0f, 1.0f, 0.0f);
+	   glTranslatef(2., 0, 0);
+	   glRotatef(G_fAngle_horizon, 0.0f, 1.0f, 0.0f);
+	   glRotatef(G_fAngle_vertical, 1.0f, 0.0f, 0.0f);
+	   
+	   glutWireCube(1.0);
+	glPopMatrix();
 
 	glutSwapBuffers();
 //	glFlush();
